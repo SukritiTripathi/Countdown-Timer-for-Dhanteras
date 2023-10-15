@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer for Dhanteras</title>
+    <style>
+        *,
+        *::after,
+        *::before{
+            padding: 0;
+            margin: 0;
+        }
+
+        body{
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            background-image: url(gradient-background-dhanteras-festival-celebration_23-2150829718.avif);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgba(247, 194, 3, 0.7)
+         }
+               
+.countainer{
+    height: 70vh;
+    width: 65vw;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: -2px -2px 5px 11px rgba(255, 174, 0, 0.795);   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+
+}   
+
+h1{
+    font-size: 30px;
+
+}
+
+.countainer .timerCountainer{
+    display: flex;
+    margin: 20px;
+
+}
+
+.time h3{
+    font-size: 55px;
+}
+
+.time{
+    margin: 0 20px;
+    font-size: 20px;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+    <div class="countainer">
+        <h1>Dhanteras Countdown Timer</h1>
+        <div class="TimerCountainer">
+            <div class="time">
+                <h3 id="day">00</h3>
+                <p>Days</p>
+            </div>
+            <div class="time">
+                <h3 id="hours">00</h3>
+                <p>Hours</p>
+            </div>
+            <div class="time">
+                <h3 id="minutes">00</h3>
+                <p>Minutes</p>
+            </div>
+            <div class="time">
+                <h3 id="seconds">00</h3>
+                <p>Seconds</p>
+            </div>
+        </div>
+
+    </div>
+   <script>
+    var DhanterasTime = new Date("10 November, 2023 00:00:00").getTime();
+UpdateTime();
+function UpdateTime() {
+    
+
+var x = setInterval(function(){
+    var now = new Date().getTime();
+    var distance = DhanterasTime - now;
+
+    var days = Math.floor(distance/(1000 * 60 * 60 * 24));
+    var hours = Math.floor ((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60 ));
+    var minutes = Math.floor((distance % (1000 * 60 * 60 )) / (1000 * 60 ));
+    var seconds = Math.floor((distance % (1000 * 60 ))/1000);
+
+    document.getElementById("day").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
+
+    if (distance < 0){
+        clearInterval(x);
+    document.getElementById("day").innerHTML = 00;
+    document.getElementById("hours").innerHTML = 00;
+    document.getElementById("minutes").innerHTML = 00;
+    document.getElementById("seconds").innerHTML = 00;
+    }
+
+},1000);
+}
+   </script>
+</body>
+</html>
